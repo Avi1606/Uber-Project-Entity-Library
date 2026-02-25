@@ -1,0 +1,1 @@
+ALTER TABLE driver ADD COLUMN aadhar_card_number VARCHAR(255) UNIQUE;

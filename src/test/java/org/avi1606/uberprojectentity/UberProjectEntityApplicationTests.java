@@ -1,13 +1,12 @@
 package org.avi1606.uberprojectentity;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
 class UberProjectEntityApplicationTests {
 
     @Test
     void contextLoads() {
+        // Entity library - no Spring context needed
     }
 
 }

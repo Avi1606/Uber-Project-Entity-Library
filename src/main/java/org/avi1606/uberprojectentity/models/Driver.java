@@ -11,17 +11,21 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Entity
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Driver extends BaseModel{
+public class Driver extends BaseModel {
 
     private String name;
 
     @Column(nullable = false, unique = true)
     private String licenseNumber;
 
-    @OneToMany(mappedBy = "driver")           // driver : booking
+    @Column(unique = true)
+    private String aadharCardNumber;
+
+    @OneToMany(mappedBy = "driver")
     private List<Booking> bookings = new ArrayList<>();
 }
