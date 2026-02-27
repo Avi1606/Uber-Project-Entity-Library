@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS hibernate_sequences (
     next_val BIGINT
 );
 
-INSERT INTO hibernate_sequences (sequence_name, next_val) VALUES ('default', 1);
+INSERT INTO hibernate_sequences (sequence_name, next_val) VALUES ('default', 1) ON CONFLICT (sequence_name) DO NOTHING;
 
 -- Passenger Table
 CREATE TABLE IF NOT EXISTS passenger (
