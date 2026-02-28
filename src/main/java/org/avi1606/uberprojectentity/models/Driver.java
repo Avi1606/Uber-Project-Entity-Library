@@ -1,9 +1,8 @@
 package org.avi1606.uberprojectentity.models;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMax;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,6 +24,27 @@ public class Driver extends BaseModel {
 
     @Column(unique = true)
     private String aadharCardNumber;
+
+    @OneToOne(mappedBy = "driver",cascade = CascadeType.ALL)
+    private Car car;
+
+    @Enumerated(value = EnumType.STRING)
+    private DriverApprovalStatus driverApprovalStatus;
+
+    @OneToOne
+    private ExactLocation lastKnownLocation;
+
+    @OneToOne
+    private ExactLocation home;
+
+    private String activeCity;
+
+    private boolean isAvailable;
+
+    @DecimalMax(value = "0.00" , message = "Rating must be greater than or equals to 0.00" )
+    @DecimalMax(value = "5.00" , message = "Rating must be less than or equals to 5.00" )
+    private Double rating;
+
 
     @OneToMany(mappedBy = "driver")
     private List<Booking> bookings = new ArrayList<>();
